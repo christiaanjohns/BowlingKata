@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.13)
-project(BowlingKata)
+project(bowlingKata)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(BowlingKata main.cpp)
+add_executable(bowlingKata main.cpp game.cpp game.h)
