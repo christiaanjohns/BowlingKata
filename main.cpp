@@ -6,7 +6,7 @@
 TEST_CASE("Does the Game exists","[score]")
 {
     // Arrange
-    Game *g = new Game;
+    auto g = new Game;
     // Act
     // Assert
     REQUIRE(g != NULL);
@@ -70,4 +70,18 @@ TEST_CASE("One Strike followed by 3 roll and 4 roll Returns Correct Value","[sco
     }
     // Assert
     REQUIRE(g.scoreGame() == 24);
+}
+
+TEST_CASE("All strikes (perfect game) Returns Correct Value","[score]") {
+    // Arrange
+    Game g;
+    int pins = 0;
+    // Act
+    pins = 10; //strike
+
+    for (int rollNum = 0; rollNum < 12; rollNum++) {
+        g.roll(pins);
+    }
+    // Assert
+    REQUIRE(g.scoreGame() == 300);
 }
