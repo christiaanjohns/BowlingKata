@@ -37,7 +37,7 @@ TEST_CASE("Single Pin Game Return 20","[score]")
         g.roll(pins);
     }
     // Assert
-    REQUIRE(20 == g.scoreGame());
+    REQUIRE(g.scoreGame() == 20);
 }
 
 TEST_CASE("One Spare followed by 3 pin frame Game Return 16","[score]") {
@@ -55,3 +55,4 @@ TEST_CASE("One Spare followed by 3 pin frame Game Return 16","[score]") {
     // Assert
     REQUIRE(g.scoreGame() == 16);
 }
+
