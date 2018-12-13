@@ -4,6 +4,12 @@
 
 #include "game.h"
 
+Game::Game()            //constructor
+{
+    currentRoll = 0;
+    rolls.fill(0);
+}
+
 void Game::roll(int frame) {
 /*  James Solution
     if(count%2==0)
@@ -39,16 +45,22 @@ int Game::scoreGame()
     int rollNum = 0;
     for (int frame=0; frame < 10; frame++)
     {
-        if(isSpare(rollNum)) // spare
+        if(rolls[rollNum] == 10) //strike
+        {
+            score += rolls[rollNum] + rolls[rollNum + 1] + rolls[rollNum + 2];
+            rollNum += 1;
+        }
+        else if(isSpare(rollNum)) // spare
         {
             score += 10 + rolls[rollNum + 2];
+            rollNum += 2;
         }
         else
         {
             score += rolls[rollNum] + rolls[rollNum + 1];
+            rollNum += 2;
         }
-        //Scoring per game
-        rollNum += 2;
+
     }
     return score;
 }
@@ -58,3 +70,10 @@ bool Game::isSpare(int frameIndex)
     return rolls[frameIndex] + rolls[frameIndex + 1] == 10;
 
 }
+
+bool Game::isStrike(int frameIndex)
+{
+    return rolls[frameIndex] == 10;
+}
+
+

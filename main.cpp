@@ -56,3 +56,18 @@ TEST_CASE("One Spare followed by 3 pin frame Game Return 16","[score]") {
     REQUIRE(g.scoreGame() == 16);
 }
 
+TEST_CASE("One Strike followed by 3 roll and 4 roll Returns Correct Value","[score]") {
+    // Arrange
+    Game g;
+    int pins = 0;
+    // Act
+    g.roll(10); //strike
+    g.roll(3);
+    g.roll(4);
+
+    for (int frame = 0; frame < 16; frame++) {
+        g.roll(pins);
+    }
+    // Assert
+    REQUIRE(g.scoreGame() == 24);
+}
